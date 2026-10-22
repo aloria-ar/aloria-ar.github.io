@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Aloria · Lo bueno del interior</title>
+<meta name="description" content="Aceite de oliva, frutos secos, aceitunas y semillas del interior. Elegís de la lista y pedís por WhatsApp.">
+<meta name="theme-color" content="#f1ece4">
+<meta property="og:title" content="Aloria · Lo bueno del interior">
+<meta property="og:description" content="Aceite de oliva virgen extra, nueces, frutos secos y semillas. Pedís por WhatsApp.">
+<meta property="og:image" content="img/aceite-mesa.jpg">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@100;200;300;400;500&family=Hanken+Grotesk:wght@400;500;600&family=Marcellus&display=swap">
+<script>document.documentElement.classList.add("js")</script>
+<style>
+/* Concepto: la luz de las fotos. Fondo del color de la pared, letra alta y fina,
+   mucho aire, y una página que se mueve con el scroll: entra, se desliza, se enciende. */
+:root{
+  --wall:#f1ece4;       /* pared de las fotos */
+  --wall-2:#e6dfd3;
+  --ink:#26281f;
+  --ink-soft:#6c6a5d;
+  --olive:#46543a;      /* verde Aloria */
+  --olive-deep:#262e20;
+  --gold:#b08a35;       /* dorado del aceite */
+  --gold-soft:#d9bf7c;
+  --line:rgba(38,40,31,.14);
+
+  --f-display:"Antonio","Barlow Condensed","Arial Narrow",sans-serif;
+  --f-body:"Hanken Grotesk","Segoe UI",system-ui,sans-serif;
+  --f-brand:"Marcellus","Trajan Pro",Georgia,serif;
+  --ease:cubic-bezier(.16,.84,.3,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--wall);color:var(--ink);font:400 17px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:200;margin:0;text-wrap:balance;line-height:.92;text-transform:uppercase;letter-spacing:.005em}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+[hidden]{display:none!important}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:24px}
+.kick{font-size:.78rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.num{font-family:var(--f-display);font-weight:300;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+
+/* ---------- movimiento ---------- */
+.js .rv{opacity:0;transform:translateY(46px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+.js .line{display:block;overflow:hidden;padding-bottom:.04em}
+.js .line>span{display:block;transform:translateY(105%);transition:transform 1.3s var(--ease);transition-delay:var(--d,0s)}
+.js .ready .line>span{transform:none}
+.par{overflow:hidden;position:relative}
+.par img{width:100%;height:118%;object-fit:cover;will-change:transform}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .rv,.js .line>span{opacity:1;transform:none;transition:none}
+  .par img{height:100%;transform:none!important}
+}
+
+/* ---------- barra superior ---------- */
+.top{position:fixed;inset:0 0 auto;z-index:30;padding-top:env(safe-area-inset-top,0px);background:var(--wall);transition:box-shadow .4s}
+.hero{padding-top:72px}
+.top.solid{background:rgba(241,236,228,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
+.brand{font-family:var(--f-brand);font-size:1.4rem;letter-spacing:.34em;padding-left:.34em;text-decoration:none;color:var(--olive)}
+.top nav{display:flex;gap:30px;align-items:center}
+.top nav a{text-decoration:none;font-size:.86rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase}
+.top nav a:hover{color:var(--gold)}
+.bag-btn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--ink);background:none;border-radius:999px;padding:8px 16px;font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.bag-btn b{font-family:var(--f-display);font-weight:400;font-size:.95rem;background:var(--olive);color:var(--wall);border-radius:999px;min-width:24px;height:24px;display:inline-grid;place-items:center;padding:0 6px}
+@media (max-width:800px){.top nav a{display:none}}
+
+/* ---------- portada ---------- */
+.hero{min-height:100vh;min-height:100svh;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:stretch}
+.hero-txt{display:flex;flex-direction:column;justify-content:flex-end;padding:120px 24px 64px max(24px,calc((100vw - 1240px)/2 + 24px))}
+.hero h1{font-size:clamp(3.6rem,10.5vw,10rem);color:var(--olive);margin:22px 0 30px}
+.hero h1 em{font-style:normal;color:var(--gold);font-weight:200}
+.hero .lead{max-width:40ch;color:var(--ink-soft);font-size:1.08rem}
+.ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:15px 28px;border-radius:999px;text-decoration:none;font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;border:1px solid transparent;transition:background .3s,color .3s,border-color .3s}
+.btn-dark{background:var(--olive);color:var(--wall)}
+.btn-dark:hover{background:var(--olive-deep)}
+.btn-ghost{border-color:var(--ink);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--wall)}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:#9a7629}
+.hero-img{position:relative;min-height:520px}
+.hero-img .par{position:absolute;inset:0}
+@media (max-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr);min-height:0}
+  .hero-txt{padding:44px 24px 40px}
+  .hero-img{min-height:0;aspect-ratio:4/5;max-width:100%}
+}
+
+/* ---------- franja que se desliza ---------- */
+.band{overflow:hidden;padding-block:44px;border-block:1px solid var(--line);white-space:nowrap}
+.band-track{display:inline-flex;gap:48px;font-family:var(--f-display);font-weight:100;font-size:clamp(3rem,8vw,7rem);text-transform:uppercase;color:var(--olive);will-change:transform}
+.band-track span{display:inline-flex;align-items:center;gap:48px}
+.band-track span::after{content:"";width:.16em;height:.16em;border-radius:50%;background:var(--gold)}
+
+/* ---------- frase que se enciende ---------- */
+.say{padding-block:110px 90px}
+.say p{font-family:var(--f-display);font-weight:200;font-size:clamp(2rem,4.6vw,4rem);line-height:1.12;text-transform:uppercase;max-width:22ch}
+.say .w{color:rgba(38,40,31,.16);transition:color .3s}
+.say .w.on{color:var(--ink)}
+.say .w.g.on{color:var(--gold)}
+.say p.who{margin-top:34px;color:var(--ink-soft);max-width:44ch;font-family:var(--f-body);font-weight:400;font-size:1.05rem;line-height:1.6;text-transform:none}
+
+/* ---------- los más elegidos ---------- */
+.best{padding-block:40px 60px}
+.best-head{margin-bottom:56px}
+.best-head h2{font-size:clamp(3.6rem,10vw,9rem);color:var(--olive);margin-top:14px}
+.best-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:70px 48px}
+.best-grid .feat:nth-child(3n+2){margin-top:110px}
+.feat-img{aspect-ratio:4/5}
+.feat-img .par{height:100%}
+.feat .kick{display:block;margin-top:28px}
+.feat h3{font-size:clamp(2.2rem,3.4vw,3.2rem);line-height:1.04;color:var(--olive);margin:12px 0 14px}
+.feat .det{color:var(--ink-soft);font-size:1.02rem;max-width:44ch}
+.feat .pres{margin-top:26px}
+@media (max-width:1000px){.best-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.best-grid .feat:nth-child(3n+2){margin-top:0}.best-grid .feat:nth-child(even){margin-top:90px}}
+@media (max-width:680px){.best-grid{grid-template-columns:minmax(0,1fr);gap:64px}.best-grid .feat:nth-child(even){margin-top:0}}
+
+/* presentaciones y + / - */
+.pres{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.pres li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:22px;padding:16px 0;border-bottom:1px solid var(--line)}
+.pres .w{font-size:.82rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.pres .p{font-size:1.7rem}
+.step{display:inline-flex;align-items:center;border:1px solid var(--ink);border-radius:999px;height:40px}
+.step button{width:40px;height:38px;border:0;background:none;font-size:1.2rem;line-height:1;border-radius:999px;transition:background .2s}
+.step button:hover{background:rgba(38,40,31,.07)}
+.step output{min-width:22px;text-align:center;font-family:var(--f-display);font-size:1.1rem}
+.step.on{background:var(--olive);border-color:var(--olive);color:var(--wall)}
+.step.on button:hover{background:rgba(255,255,255,.12)}
+
+/* ---------- lista completa ---------- */
+.list{padding-block:110px 90px}
+.list-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:60px}
+.list-head h2{font-size:clamp(4rem,12vw,11rem);color:var(--olive)}
+.list-head p{color:var(--ink-soft);max-width:34ch}
+.cat{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,2fr);gap:20px 60px;padding-block:44px;border-top:1px solid var(--ink)}
+.cat h3{font-size:1.05rem;font-family:var(--f-body);font-weight:600;letter-spacing:.2em;color:var(--gold)}
+.items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 60px}
+.item h4{font-size:clamp(2rem,3.4vw,2.9rem);line-height:1.04;font-weight:300;color:var(--ink)}
+.item .det{color:var(--ink-soft);margin:10px 0 20px;font-size:.98rem}
+.item .pres li{padding:12px 0}
+.item .pres .p{font-size:1.45rem}
+@media (max-width:900px){.cat{grid-template-columns:minmax(0,1fr);gap:24px}.items{grid-template-columns:minmax(0,1fr);gap:40px}}
+
+/* ---------- galería que avanza de costado ---------- */
+.gal{position:relative;height:300vh;background:var(--olive-deep);color:var(--wall)}
+.gal-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding-top:72px}
+.gal-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:40px}
+.gal-head h2{font-size:clamp(3rem,7vw,6.4rem);color:var(--wall)}
+.gal-head p{max-width:30ch;color:rgba(241,236,228,.7)}
+.gal-track{display:flex;gap:28px;padding-inline:max(24px,calc((100vw - 1240px)/2 + 24px));will-change:transform}
+.gal-track figure{margin:0;flex:none;width:clamp(240px,26vw,380px)}
+.gal-track figure:nth-child(even){margin-top:70px}
+.gal-track .par{aspect-ratio:3/4}
+.gal-track figcaption{margin-top:14px;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft)}
+@media (max-width:760px){
+  .gal{height:auto;padding-block:80px}
+  .gal-stick{position:static;height:auto}
+  .gal-track{overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;transform:none!important}
+  .gal-track figure{scroll-snap-align:center;width:76vw}
+  .gal-track figure:nth-child(even){margin-top:0}
+}
+
+/* ---------- mayoristas ---------- */
+.mayor{padding-block:130px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:60px;align-items:center}
+.ladder{background:#fff;border-radius:18px;padding:30px 30px 24px;box-shadow:0 30px 70px -40px rgba(38,40,31,.4)}
+.ladder-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:26px}
+.ladder-top b{font-family:var(--f-display);font-weight:300;font-size:1.7rem;text-transform:uppercase;color:var(--olive)}
+.ladder-top small{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.bars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:end;height:240px;border-bottom:1px solid var(--line);
+  background:repeating-linear-gradient(0deg,transparent 0 59px,var(--line) 59px 60px)}
+.bars i{display:block;border-radius:8px 8px 0 0;background:linear-gradient(var(--olive),#5d6d4c);transform-origin:bottom}
+.bars i:nth-child(1){height:100%}.bars i:nth-child(2){height:86%}.bars i:nth-child(3){height:72%}.bars i:nth-child(4){height:56%;background:linear-gradient(var(--gold),#c9a24c)}
+.js .ladder .bars i{transform:scaleY(0);transition:transform 1.2s var(--ease)}
+.js .ladder.in .bars i{transform:none}
+.js .ladder.in .bars i:nth-child(2){transition-delay:.12s}.js .ladder.in .bars i:nth-child(3){transition-delay:.24s}.js .ladder.in .bars i:nth-child(4){transition-delay:.36s}
+.bars-x{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:12px;text-align:center;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.bars-x span:last-child{color:var(--gold)}
+.ladder-cap{margin-top:18px;font-size:.92rem;color:var(--ink-soft)}
+@media (prefers-reduced-motion:reduce){.js .ladder .bars i{transform:none}}
+@media (max-width:520px){.ladder{padding:22px 18px 18px}.bars{height:180px;gap:10px}.bars-x{gap:10px;font-size:.62rem;letter-spacing:.06em}}.mayor h2{font-size:clamp(2.6rem,5vw,4.4rem);line-height:1.22;color:var(--olive);margin:18px 0 22px}
+.mayor p{color:var(--ink-soft);max-width:44ch}
+.mayor .who{margin:26px 0 34px;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+@media (max-width:860px){.mayor{grid-template-columns:minmax(0,1fr);padding-block:80px}}
+
+/* ---------- origen ---------- */
+.origen{position:relative;min-height:110vh;display:flex;align-items:flex-end;color:var(--wall)}
+.origen .par{position:absolute;inset:0}
+.origen .par::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,16,.05) 30%,rgba(20,24,16,.72))}
+.origen .wrap{position:relative;padding-block:90px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px 80px;align-items:end}
+.origen h2{font-size:clamp(3.4rem,9vw,8.6rem);line-height:1.04;color:var(--wall)}
+.origen h2 em{font-style:normal;color:var(--gold-soft)}
+.origen .txt{display:flex;flex-direction:column;gap:16px;color:rgba(241,236,228,.88)}
+@media (max-width:860px){.origen{min-height:0}.origen .par{position:absolute}.origen .wrap{grid-template-columns:minmax(0,1fr);padding-top:280px}}
+
+/* ---------- pie ---------- */
+footer{background:var(--olive-deep);color:var(--wall);padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
+.foot-big{padding-block:100px 60px;border-bottom:1px solid rgba(241,236,228,.15)}
+.foot-big h2{font-size:clamp(3rem,8vw,7rem);color:var(--wall)}
+.foot-big h2 a{text-decoration:none;color:var(--gold-soft)}
+.foot-big h2 a:hover{color:var(--wall)}
+.foot-row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-block:30px;font-size:.88rem;color:rgba(241,236,228,.65)}
+.foot-row .brand{color:var(--wall);font-size:1.2rem}
+
+/* ---------- pedido ---------- */
+.bag{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:0 14px calc(14px + env(safe-area-inset-bottom,0px));pointer-events:none}
+.bag-card{pointer-events:auto;max-width:720px;margin:0 auto;background:var(--olive-deep);color:var(--wall);border-radius:20px;box-shadow:0 26px 60px -24px rgba(0,0,0,.6);overflow:hidden;transform:translateY(150%);transition:transform .6s var(--ease)}
+.bag.show .bag-card{transform:none}
+.bag-bar{display:flex;align-items:center;gap:14px;padding:12px 12px 12px 24px}
+.bag-sum{flex:1;min-width:0;background:none;border:0;text-align:left;padding:0}
+.bag-sum small{display:block;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft)}
+.bag-sum b{font-family:var(--f-display);font-weight:300;font-size:1.6rem;line-height:1.1}
+.bag-detail{padding:20px 24px 8px;max-height:min(55vh,440px);overflow:auto;border-bottom:1px solid rgba(241,236,228,.14)}
+.bag-detail ul{list-style:none;margin:0 0 16px;padding:0;display:flex;flex-direction:column;gap:9px}
+.bag-detail li{display:flex;justify-content:space-between;gap:14px;font-size:.95rem}
+.bag-detail li span:last-child{font-family:var(--f-display);font-size:1.1rem;white-space:nowrap}
+.bag-detail label{display:flex;flex-direction:column;gap:5px;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-soft)}
+.bag-detail input{background:rgba(241,236,228,.07);border:1px solid rgba(241,236,228,.22);border-radius:10px;color:var(--wall);padding:11px 12px;font:inherit;font-size:16px;letter-spacing:0;text-transform:none}
+.bag-detail .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+@media (max-width:520px){.bag-detail .row{grid-template-columns:minmax(0,1fr)}}
+.clear{background:none;border:0;color:rgba(241,236,228,.6);text-decoration:underline;font-size:.85rem;padding:0;margin:14px 0 10px}
+.btn-wa{background:var(--gold);color:#fff;border-radius:999px;padding:14px 22px;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
+.btn-wa:hover{background:#9a7629}
+@media (max-width:420px){.btn-wa{padding:13px 16px;letter-spacing:.08em}}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Aloria, inicio">ALORIA</a>
+    <nav aria-label="Secciones">
+      <a href="#lista">Productos</a>
+      <a href="#mayoristas">Mayoristas</a>
+      <a href="#origen">La Rioja</a>
+      <button class="bag-btn" type="button" id="bagTop" aria-label="Ver tu pedido">Pedido <b id="bagCount">0</b></button>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="hero-txt" id="heroTxt">
+      <span class="kick rv">Productos regionales · Pedidos por WhatsApp</span>
+      <h1>
+        <span class="line"><span>Lo bueno</span></span>
+        <span class="line"><span style="--d:.14s"><em>del interior.</em></span></span>
+      </h1>
+      <p class="lead rv" style="--d:.4s">Aceite de oliva, frutos secos, aceitunas y semillas. Elegís de la lista, nos mandás el pedido y coordinamos la entrega.</p>
+      <div class="ctas rv" style="--d:.5s">
+        <a class="btn btn-dark" href="#lista">Ver productos</a>
+        <a class="btn btn-ghost" data-wa="Hola Aloria! Quería hacer una consulta." href="#">Escribinos</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <div class="par"><img src="img/aceite-portada.jpg" alt="Dos botellas de aceite de oliva virgen extra Aloria, frente y contraetiqueta, sobre una mesa de madera" data-speed="0.12" fetchpriority="high"></div>
+    </div>
+  </section>
+
+  <div class="band" aria-hidden="true"><div class="band-track" id="band"></div></div>
+
+  <section class="say wrap" id="say">
+    <p id="sayText">Calidad que se nota. Precio que se entiende.</p>
+  </section>
+
+  <section class="best wrap" id="elegidos">
+    <div class="best-head">
+      <span class="kick rv">Lo que más se lleva</span>
+      <h2 class="rv" style="--d:.08s">Los más elegidos</h2>
+    </div>
+    <div class="best-grid" id="feats"></div>
+  </section>
+
+  <section class="list wrap" id="lista">
+    <div class="list-head">
+      <h2 class="rv">La lista</h2>
+      <p class="rv" style="--d:.1s">Precios por unidad, en pesos argentinos. <span id="upd"></span></p>
+    </div>
+    <div id="cats"></div>
+  </section>
+
+  <section class="gal" id="gal" aria-label="Fotos de los productos">
+    <div class="gal-stick">
+      <div class="wrap gal-head">
+        <h2 class="rv">Sobre la mesa</h2>
+        <p class="rv" style="--d:.1s">Así llegan los productos: aceite en botella de vidrio oscuro, nueces mariposa enteras y aceitunas en frasco.</p>
+      </div>
+      <div class="gal-track" id="galTrack">
+        <figure><div class="par"><img src="img/aceite-bowl.jpg" alt="Aceite Aloria junto a un bowl de aceitunas" loading="lazy" data-speed="0.06"></div><figcaption>Aceite de oliva · 500 ml</figcaption></figure>
+        <figure><div class="par"><img src="img/nueces-bowl.jpg" alt="Nueces mariposa en un bowl de madera" loading="lazy" data-speed="0.06"></div><figcaption>Nueces mariposa</figcaption></figure>
+        <figure><div class="par"><img src="img/aceitunas-negras.jpg" alt="Frascos de aceitunas negras Aloria de 500 g y 1 kg" loading="lazy" data-speed="0.06"></div><figcaption>Aceitunas de Aimogasta</figcaption></figure>
+        <figure><div class="par"><img src="img/aceite-tabla.jpg" alt="Botella de aceite Aloria sobre una tabla" loading="lazy" data-speed="0.06"></div><figcaption>Prensado en frío</figcaption></figure>
+        <figure><div class="par"><img src="img/nueces-tabla.jpg" alt="Nueces mariposa sobre una tabla de madera" loading="lazy" data-speed="0.06"></div><figcaption>Extra light</figcaption></figure>
+        <figure><div class="par"><img src="img/aceite-mesa.jpg" alt="Aceite Aloria con hojas de laurel" loading="lazy" data-speed="0.06"></div><figcaption>Desde el corazón de La Rioja</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="mayor wrap" id="mayoristas">
+    <figure class="ladder rv" style="margin:0" aria-label="Gráfico: el precio por unidad baja a medida que el pedido tiene más bultos">
+      <div class="ladder-top"><b>Precio por unidad</b><small>según bultos del pedido</small></div>
+      <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="bars-x" aria-hidden="true"><span>1 bulto</span><span>2 bultos</span><span>3 bultos</span><span>4 o más</span></div>
+      <figcaption class="ladder-cap">Cajas de aceite, bolsas de 5 kg de nueces y frascos por caja. Pedí la cotización con las cantidades que necesitás.</figcaption>
+    </figure>
+    <div>
+      <span class="kick rv">Mayoristas</span>
+      <h2 class="rv" style="--d:.1s">Cuanto más llevás, menos pagás cada uno.</h2>
+      <p class="rv" style="--d:.2s">Si tenés un almacén, una dietética o querés armar regalos para tu empresa, te pasamos precios por bulto: cajas de aceite, bolsas de 5 kg de nueces y más. Contanos qué necesitás y te mandamos la cotización.</p>
+      <div class="who rv" style="--d:.25s"><span>Almacenes</span><span>Dietéticas</span><span>Regalos empresariales</span><span>Revendedores</span></div>
+      <a class="btn btn-gold rv" style="--d:.3s" data-wa="Hola Aloria! Quiero pedir la lista mayorista." href="#">Pedir cotización mayorista</a>
+    </div>
+  </section>
+
+  <section class="origen" id="origen">
+    <div class="par"><img src="img/origen-aceitunas.jpg" alt="Aceitunas de Aimogasta en un bowl de madera" loading="lazy" data-speed="0.15"></div>
+    <div class="wrap">
+      <h2 class="rv">Desde el corazón <em>de La Rioja</em></h2>
+      <div class="txt">
+        <p class="rv" style="--d:.1s">Aloria empezó con el aceite de oliva y las aceitunas de Aimogasta, en el norte de La Rioja, una zona donde el olivo se cultiva hace siglos.</p>
+        <p class="rv" style="--d:.2s">Hoy sumamos frutos secos y semillas, con la misma idea de siempre: productos buenos, de verdad, a un precio claro.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-big">
+    <span class="kick">Pedidos y consultas</span>
+    <h2 class="rv">Escribinos al <a data-wa="Hola Aloria! Quiero hacer un pedido." href="#" id="waBig">WhatsApp</a></h2>
+  </div>
+  <div class="wrap foot-row">
+    <span class="brand">ALORIA</span>
+    <span>Lo bueno del interior · Aceite de oliva, frutos secos, aceitunas y semillas</span>
+    <span id="upd2"></span>
+  </div>
+</footer>
+
+<div class="bag" id="bag" aria-live="polite">
+  <div class="bag-card">
+    <div class="bag-detail" id="bagDetail" hidden>
+      <ul id="bagList"></ul>
+      <div class="row">
+        <label>Tu nombre<input id="cName" autocomplete="name" maxlength="60"></label>
+        <label>Barrio o zona de entrega<input id="cZone" maxlength="80"></label>
+      </div>
+      <button class="clear" type="button" id="clear">Vaciar pedido</button>
+    </div>
+    <div class="bag-bar">
+      <button class="bag-sum" type="button" id="bagToggle" aria-expanded="false" aria-controls="bagDetail">
+        <small id="bagItems">0 productos · ver detalle</small>
+        <b id="bagTotal">$0</b>
+      </button>
+      <a class="btn-wa" id="sendWa" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script src="productos.js"></script>
+<script>
+(function(){
+  var D = window.ALORIA || {categorias:[]};
+  var $ = function(id){return document.getElementById(id)};
+  var all = function(sel,root){return Array.prototype.slice.call((root||document).querySelectorAll(sel))};
+  var money = function(n){return "$"+Math.round(n).toLocaleString("es-AR")};
+  var esc = function(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
+  var num = String(D.whatsapp||"").replace(/\D/g,"");
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ================= catálogo ================= */
+  var items = {}, prods = [];
+  D.categorias.forEach(function(c,ci){c.productos.forEach(function(p,pi){
+    prods.push({c:c,p:p,ci:ci,pi:pi});
+    p.presentaciones.forEach(function(x,xi){ items[ci+"-"+pi+"-"+xi] = {name:p.nombre, w:x.peso, price:+x.precio||0} });
+  })});
+  function stepper(k,label){
+    return '<span class="step" data-k="'+k+'"><button type="button" data-d="-1" aria-label="Quitar '+esc(label)+'">−</button>'+
+      '<output aria-label="Cantidad">0</output><button type="button" data-d="1" aria-label="Agregar '+esc(label)+'">+</button></span>';
+  }
+  function presList(o){
+    return '<ul class="pres">'+o.p.presentaciones.map(function(x,xi){
+      return '<li><span class="w">'+esc(x.peso)+'</span><span class="p num">'+money(x.precio)+'</span>'+stepper(o.ci+"-"+o.pi+"-"+xi, o.p.nombre+" "+x.peso)+'</li>';
+    }).join("")+'</ul>';
+  }
+
+
+  // Franja con los nombres de las categorías
+  var names = D.categorias.map(function(c){return c.nombre});
+  var bandHTML = names.map(function(n){return '<span>'+esc(n)+'</span>'}).join("");
+  $("band").innerHTML = bandHTML + bandHTML + bandHTML;
+
+  // Destacados: los productos con foto
+  $("feats").innerHTML = prods.filter(function(o){return o.p.elegido && o.p.foto}).map(function(o){
+    return '<article class="feat">'+
+      '<div class="feat-img rv"><div class="par"><img src="'+esc(o.p.foto)+'" alt="'+esc(o.p.nombre)+' Aloria" loading="lazy" data-speed="0.1"></div></div>'+
+      '<span class="kick rv">'+esc(o.p.sello||o.c.nombre)+'</span><h3 class="rv" style="--d:.08s">'+esc(o.p.nombre)+'</h3>'+
+      (o.p.detalle?'<p class="det rv" style="--d:.16s">'+esc(o.p.detalle)+'</p>':'')+
+      '<div class="rv" style="--d:.24s">'+presList(o)+'</div></article>';
+  }).join("");
+
+  // Lista completa
+  $("cats").innerHTML = D.categorias.map(function(c,ci){
+    return '<div class="cat"><h3 class="rv">'+esc(c.nombre)+'</h3><div class="items">'+
+      c.productos.map(function(p,pi){
+        var o={c:c,p:p,ci:ci,pi:pi};
+        return '<article class="item rv" style="--d:'+(pi*0.08)+'s"><h4>'+esc(p.nombre)+'</h4>'+(p.detalle?'<p class="det">'+esc(p.detalle)+'</p>':'')+presList(o)+'</article>';
+      }).join("")+'</div></div>';
+  }).join("");
+
+  // Fecha de los precios: siempre la de hoy, como =HOY() en Excel
+  var hoy = new Date().toLocaleDateString("es-AR",{day:"2-digit",month:"2-digit",year:"numeric"});
+  $("upd").textContent = "Vigentes al "+hoy+"."; $("upd2").textContent = "Precios vigentes al "+hoy;
+
+  // Links de WhatsApp
+  function waLink(text){ return num ? "https://wa.me/"+num+"?text="+encodeURIComponent(text) : "#" }
+  all("[data-wa]").forEach(function(a){ a.href = waLink(a.dataset.wa); if(num){a.target="_blank";a.rel="noopener"} });
+  if(D.whatsappVisible) $("waBig").textContent = D.whatsappVisible;
+
+  /* ================= pedido ================= */
+  var cart = {};
+  try{ cart = JSON.parse(localStorage.getItem("aloria-pedido")||"{}") }catch(e){}
+  Object.keys(cart).forEach(function(k){ if(!items[k]||!(cart[k]>0)) delete cart[k] });
+  function save(){ try{ localStorage.setItem("aloria-pedido",JSON.stringify(cart)) }catch(e){} }
+  function render(){
+    var keys = Object.keys(cart), units = 0, total = 0;
+    keys.forEach(function(k){ units += cart[k]; total += cart[k]*items[k].price });
+    all(".step").forEach(function(s){ var q = cart[s.dataset.k]||0; s.querySelector("output").textContent = q; s.classList.toggle("on",q>0) });
+    $("bagCount").textContent = units;
+    $("bag").classList.toggle("show", units>0);
+    $("bagItems").textContent = units+(units===1?" producto":" productos")+" · "+($("bagDetail").hidden?"ver detalle":"ocultar");
+    $("bagTotal").textContent = money(total);
+    $("bagList").innerHTML = keys.map(function(k){
+      var it = items[k]; return '<li><span>'+cart[k]+' × '+esc(it.name)+' '+esc(it.w)+'</span><span>'+money(cart[k]*it.price)+'</span></li>';
+    }).join("") + '<li style="border-top:1px solid rgba(241,236,228,.18);padding-top:10px"><span>Total</span><span>'+money(total)+'</span></li>';
+    updateSend();
+  }
+  function updateSend(){
+    var keys = Object.keys(cart), total = 0, lines = ["Hola Aloria! Quiero hacer este pedido:",""];
+    keys.forEach(function(k){ var it=items[k]; total += cart[k]*it.price; lines.push("• "+cart[k]+" × "+it.name+" "+it.w+" — "+money(cart[k]*it.price)) });
+    lines.push("","Total: "+money(total));
+    var n=$("cName").value.trim(), z=$("cZone").value.trim();
+    if(n) lines.push("Nombre: "+n);
+    if(z) lines.push("Entrega en: "+z);
+    $("sendWa").href = waLink(lines.join("\n"));
+  }
+  document.addEventListener("click",function(e){
+    var b = e.target.closest(".step button"); if(!b) return;
+    var k = b.parentNode.dataset.k, q = (cart[k]||0) + (+b.dataset.d);
+    if(q>0) cart[k]=Math.min(q,99); else delete cart[k];
+    save(); render();
+  });
+  function toggle(open){
+    var d=$("bagDetail"); d.hidden = open==null ? !d.hidden : !open;
+    $("bagToggle").setAttribute("aria-expanded", String(!d.hidden)); render();
+  }
+  $("bagToggle").addEventListener("click",function(){toggle()});
+  $("bagTop").addEventListener("click",function(){ if(Object.keys(cart).length) toggle(true); else $("lista").scrollIntoView() });
+  $("clear").addEventListener("click",function(){ cart={}; save(); toggle(false) });
+  ["cName","cZone"].forEach(function(id){ $(id).addEventListener("input",updateSend) });
+  render();
+
+  /* ================= movimiento ================= */
+  // 1) Títulos de la portada: las líneas suben al cargar
+  function showHero(){ $("heroTxt").classList.add("ready") }
+  requestAnimationFrame(function(){ requestAnimationFrame(showHero) });
+  setTimeout(showHero, 1200);
+
+  // 2) Aparición al entrar en pantalla
+  var rv = all(".rv");
+  if("IntersectionObserver" in window && !reduce){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target) } }) },{rootMargin:"0px 0px -8% 0px",threshold:.08});
+    rv.forEach(function(el){ io.observe(el) });
+  } else rv.forEach(function(el){ el.classList.add("in") });
+  setTimeout(function(){ all(".rv").forEach(function(el){ if(el.getBoundingClientRect().top < innerHeight) el.classList.add("in") }) }, 1500);
+
+  // 3) Frase que se enciende palabra por palabra
+  // la segunda oración se enciende en dorado
+  var say = $("sayText"), sentence = 0;
+  say.innerHTML = say.textContent.split(" ").map(function(w){
+    var html = '<span class="w'+(sentence>0?' g':'')+'">'+esc(w)+'</span>';
+    if(/\.$/.test(w)) sentence++;
+    return html;
+  }).join(" ");
+  var words = all(".w", say);
+
+  // 4) Parallax, franja y galería: todo en un solo bucle de scroll
+  var pars = all(".par img"), band = $("band"), gal = $("gal"), track = $("galTrack"), top = $("top");
+  var ticking = false;
+  function frame(){
+    ticking = false;
+    var vh = innerHeight, sy = scrollY;
+    top.classList.toggle("solid", sy > 40);
+    if(reduce){ words.forEach(function(w){w.classList.add("on")}); return }
+
+    pars.forEach(function(img){
+      var r = img.parentNode.getBoundingClientRect();
+      if(r.bottom < -100 || r.top > vh + 100) return;
+      var c = Math.max(-1, Math.min(1, (r.top + r.height/2 - vh/2) / vh));   // -1 arriba, +1 abajo
+      // la foto mide 118% del marco: se mueve dentro de ese margen sin dejar huecos
+      img.style.transform = "translate3d(0,"+(-7.6 - c * Math.min(+img.dataset.speed||.1, .07) * 100)+"%,0)";
+    });
+
+    band.style.transform = "translate3d("+(-(sy*0.35) % (band.scrollWidth/3))+"px,0,0)";
+
+    var sr = say.getBoundingClientRect();
+    var p = Math.min(1, Math.max(0, (vh*0.85 - sr.top) / (sr.height + vh*0.35)));
+    var n = Math.round(p * words.length);
+    words.forEach(function(w,i){ w.classList.toggle("on", i < n) });
+
+    if(innerWidth > 760){
+      var gr = gal.getBoundingClientRect(), span = gal.offsetHeight - vh;
+      var gp = Math.min(1, Math.max(0, -gr.top / span));
+      track.style.transform = "translate3d("+(-gp * Math.max(0, track.scrollWidth - innerWidth))+"px,0,0)";
+    }
+  }
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(frame) } }
+  addEventListener("scroll", onScroll, {passive:true});
+  addEventListener("resize", onScroll);
+  frame();
+})();
+</script>
+</body>
+</html>
