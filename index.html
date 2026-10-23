@@ -285,8 +285,8 @@ footer{background:var(--olive-deep);color:var(--wall);padding-bottom:calc(120px 
 
   <section class="list wrap" id="lista">
     <div class="list-head">
-      <h2 class="rv">La lista</h2>
-      <p class="rv" style="--d:.1s">Precios por unidad, en pesos argentinos. <span id="upd"></span></p>
+      <h2 class="rv">Lista</h2>
+      <p class="rv" style="--d:.1s">Precios por unidad. <span id="upd"></span></p>
     </div>
     <div id="cats"></div>
   </section>
@@ -421,7 +421,7 @@ footer{background:var(--olive-deep);color:var(--wall);padding-bottom:calc(120px 
 
   // Fecha de los precios: siempre la de hoy, como =HOY() en Excel
   var hoy = new Date().toLocaleDateString("es-AR",{day:"2-digit",month:"2-digit",year:"numeric"});
-  $("upd").textContent = "Vigentes al "+hoy+"."; $("upd2").textContent = "Precios vigentes al "+hoy;
+  $("upd").textContent = "Vigentes al "+hoy+"."; $("upd2").textContent = "Precios en pesos argentinos, vigentes al "+hoy+".";
 
   // Links de WhatsApp
   function waLink(text){ return num ? "https://wa.me/"+num+"?text="+encodeURIComponent(text) : "#" }
