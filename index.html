@@ -148,7 +148,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .cat{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,2fr);gap:20px 60px;padding-block:44px;border-top:1px solid var(--ink)}
 .cat h3{font-size:1.05rem;font-family:var(--f-body);font-weight:600;letter-spacing:.2em;color:var(--gold)}
 .items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 60px}
-.item h4{font-size:clamp(2rem,3.4vw,2.9rem);line-height:1.04;font-weight:300;color:var(--ink)}
+.item h4{font-size:clamp(2rem,3.4vw,2.9rem);line-height:1.04;font-weight:300;color:var(--ink);margin-bottom:18px}
 .item .det{color:var(--ink-soft);margin:10px 0 20px;font-size:.98rem}
 .item .pres li{padding:12px 0}
 .item .pres .p{font-size:1.45rem}
@@ -415,7 +415,7 @@ footer{background:var(--olive-deep);color:var(--wall);padding-bottom:calc(120px 
     return '<div class="cat"><h3 class="rv">'+esc(c.nombre)+'</h3><div class="items">'+
       c.productos.map(function(p,pi){
         var o={c:c,p:p,ci:ci,pi:pi};
-        return '<article class="item rv" style="--d:'+(pi*0.08)+'s"><h4>'+esc(p.nombre)+'</h4>'+(p.detalle?'<p class="det">'+esc(p.detalle)+'</p>':'')+presList(o)+'</article>';
+        return '<article class="item rv" style="--d:'+(pi*0.08)+'s"><h4>'+esc(p.nombre)+'</h4>'+presList(o)+'</article>';
       }).join("")+'</div></div>';
   }).join("");
 
