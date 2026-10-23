@@ -173,7 +173,7 @@ button{font:inherit;color:inherit;cursor:pointer}
   .gal-track figure:nth-child(even){margin-top:0}
 }
 
-/* ---------- mayoristas ---------- */
+/* ---------- por cantidad ---------- */
 .mayor{padding-block:130px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:60px;align-items:center}
 .ladder{background:#fff;border-radius:18px;padding:30px 30px 24px;box-shadow:0 30px 70px -40px rgba(38,40,31,.4)}
 .ladder-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:26px}
@@ -243,7 +243,7 @@ footer{background:var(--olive-deep);color:var(--wall);padding-bottom:calc(120px 
     <a class="brand" href="#inicio" aria-label="Aloria, inicio">ALORIA</a>
     <nav aria-label="Secciones">
       <a href="#lista">Productos</a>
-      <a href="#mayoristas">Mayoristas</a>
+      <a href="#por-cantidad">Por cantidad</a>
       <a href="#origen">La Rioja</a>
       <button class="bag-btn" type="button" id="bagTop" aria-label="Ver tu pedido">Pedido <b id="bagCount">0</b></button>
     </nav>
@@ -261,7 +261,7 @@ footer{background:var(--olive-deep);color:var(--wall);padding-bottom:calc(120px 
       <p class="lead rv" style="--d:.4s">Aceite de oliva, frutos secos, aceitunas y semillas. Elegís de la lista, nos mandás el pedido y coordinamos la entrega.</p>
       <div class="ctas rv" style="--d:.5s">
         <a class="btn btn-dark" href="#lista">Ver productos</a>
-        <a class="btn btn-ghost" data-wa="Hola Aloria! Quería hacer una consulta." href="#">Escribinos</a>
+        <a class="btn btn-ghost" data-wa="Hola! Quería hacer una consulta." href="#">Escribinos</a>
       </div>
     </div>
     <div class="hero-img">
@@ -308,7 +308,7 @@ footer{background:var(--olive-deep);color:var(--wall);padding-bottom:calc(120px 
     </div>
   </section>
 
-  <section class="mayor wrap" id="mayoristas">
+  <section class="mayor wrap" id="por-cantidad">
     <figure class="ladder rv" style="margin:0" aria-label="Gráfico: el precio por unidad baja a medida que el pedido tiene más bultos">
       <div class="ladder-top"><b>Precio por unidad</b><small>según bultos del pedido</small></div>
       <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
@@ -316,11 +316,11 @@ footer{background:var(--olive-deep);color:var(--wall);padding-bottom:calc(120px 
       <figcaption class="ladder-cap">Cajas de aceite, bolsas de 5 kg de nueces y frascos por caja. Pedí la cotización con las cantidades que necesitás.</figcaption>
     </figure>
     <div>
-      <span class="kick rv">Mayoristas</span>
+      <span class="kick rv">Negocios y compras por cantidad</span>
       <h2 class="rv" style="--d:.1s">Cuanto más llevás, menos pagás cada uno.</h2>
       <p class="rv" style="--d:.2s">Si tenés un almacén, una dietética o querés armar regalos para tu empresa, te pasamos precios por bulto: cajas de aceite, bolsas de 5 kg de nueces y más. Contanos qué necesitás y te mandamos la cotización.</p>
       <div class="who rv" style="--d:.25s"><span>Almacenes</span><span>Dietéticas</span><span>Regalos empresariales</span><span>Revendedores</span></div>
-      <a class="btn btn-gold rv" style="--d:.3s" data-wa="Hola Aloria! Quiero pedir la lista mayorista." href="#">Pedir cotización mayorista</a>
+      <a class="btn btn-gold rv" style="--d:.3s" data-wa="Hola! Quiero consultar precios por cantidad." href="#">Pedir precios por cantidad</a>
     </div>
   </section>
 
@@ -339,7 +339,7 @@ footer{background:var(--olive-deep);color:var(--wall);padding-bottom:calc(120px 
 <footer>
   <div class="wrap foot-big">
     <span class="kick">Pedidos y consultas</span>
-    <h2 class="rv">Escribinos al <a data-wa="Hola Aloria! Quiero hacer un pedido." href="#" id="waBig">WhatsApp</a></h2>
+    <h2 class="rv">Escribinos al <a data-wa="Hola! Quiero hacer un pedido." href="#" id="waBig">WhatsApp</a></h2>
   </div>
   <div class="wrap foot-row">
     <span class="brand">ALORIA</span>
@@ -447,7 +447,7 @@ footer{background:var(--olive-deep);color:var(--wall);padding-bottom:calc(120px 
     updateSend();
   }
   function updateSend(){
-    var keys = Object.keys(cart), total = 0, lines = ["Hola Aloria! Quiero hacer este pedido:",""];
+    var keys = Object.keys(cart), total = 0, lines = ["Hola! Quiero hacer este pedido:",""];
     keys.forEach(function(k){ var it=items[k]; total += cart[k]*it.price; lines.push("• "+cart[k]+" × "+it.name+" "+it.w+" — "+money(cart[k]*it.price)) });
     lines.push("","Total: "+money(total));
     var n=$("cName").value.trim(), z=$("cZone").value.trim();
