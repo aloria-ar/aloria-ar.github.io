@@ -90,7 +90,7 @@ window.ALORIA = {
           detalle: "Para picar, para la granola, para el viaje.",
           presentaciones: [
             { peso: "1 kg", precio: 14500 },
-            { peso: "500 g", precio: 7500 }
+            { peso: "500 g", precio: 8000 }
           ]
         },
         {
