@@ -74,7 +74,7 @@ window.ALORIA = {
           detalle: "Mitades claras, para comer solas o sumar a lo que estés cocinando.",
           presentaciones: [
             { peso: "1 kg", precio: 21000 },
-            { peso: "500 g", precio: 11500 }
+            { peso: "350 g", precio: 8000 }
           ]
         },
         {
