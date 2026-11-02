@@ -368,7 +368,8 @@ footer{background:var(--olive-deep);color:var(--wall);padding-bottom:calc(120px 
   </div>
 </div>
 
-<script src="productos.js"></script>
+<!-- La lista de precios se pide siempre nueva, así un cambio de precio se ve enseguida -->
+<script>document.write('<script src="productos.js?v=' + Date.now() + '"><\/script>')</script>
 <script>
 (function(){
   var D = window.ALORIA || {categorias:[]};
