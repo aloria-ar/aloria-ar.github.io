@@ -47,8 +47,8 @@ window.ALORIA = {
           sello: "Enteras en salmuera · Aimogasta",
           detalle: "Elaboración artesanal, de La Rioja.",
           presentaciones: [
-            { peso: "1 kg", precio: 15000 },
-            { peso: "500 g", precio: 8500 }
+            { peso: "1 kg", precio: 16000 },
+            { peso: "500 g", precio: 9000 }
           ]
         },
         {
@@ -57,7 +57,7 @@ window.ALORIA = {
           sello: "Enteras en salmuera · Aimogasta",
           detalle: "Elaboración artesanal, de La Rioja.",
           presentaciones: [
-            { peso: "1 kg", precio: 19000 },
+            { peso: "1 kg", precio: 19500 },
             { peso: "500 g", precio: 11500 }
           ]
         }
