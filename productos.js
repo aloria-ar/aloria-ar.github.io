@@ -10,6 +10,7 @@
   - "foto" (opcional): la foto del producto, dentro de la carpeta img.
     "elegido: true" lo muestra en grande en "Los más elegidos" (necesita foto).
   - "sello" (opcional): datos cortos que aparecen arriba del nombre.
+  - "contenido" (opcional): una línea que aparece debajo del nombre en la lista.
   - La fecha de los precios se pone sola con el día de hoy.
 */
 
@@ -87,6 +88,7 @@ window.ALORIA = {
         },
         {
           nombre: "Mix de frutos secos",
+          contenido: "Almendras, nueces, castañas de cajú, maní y pasas de uva",
           detalle: "Para picar, para la granola, para el viaje.",
           presentaciones: [
             { peso: "1 kg", precio: 14500 },
@@ -94,7 +96,7 @@ window.ALORIA = {
           ]
         },
         {
-          nombre: "Maní tostado",
+          nombre: "Maní tostado sin sal",
           detalle: "Sin sal.",
           presentaciones: [
             { peso: "1 kg", precio: 6000 }
