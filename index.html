@@ -152,6 +152,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 .item .det{color:var(--ink-soft);margin:10px 0 20px;font-size:.98rem}
 .item .pres li{padding:12px 0}
 .item .contenido{color:var(--ink-soft);font-size:.95rem;margin:-8px 0 18px}
+.badge{display:inline-block;margin-bottom:12px;padding:5px 12px;border-radius:999px;border:1px solid var(--gold);color:var(--gold);font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.badge-last{background:var(--olive-deep);border-color:var(--olive-deep);color:var(--gold-soft)}
 .item .pres .p{font-size:1.45rem}
 @media (max-width:900px){.cat{grid-template-columns:minmax(0,1fr);gap:24px}.items{grid-template-columns:minmax(0,1fr);gap:40px}}
 
@@ -391,6 +393,12 @@ footer{background:var(--olive-deep);color:var(--wall);padding-bottom:calc(120px 
     return '<span class="step" data-k="'+k+'"><button type="button" data-d="-1" aria-label="Quitar '+esc(label)+'">−</button>'+
       '<output aria-label="Cantidad">0</output><button type="button" data-d="1" aria-label="Agregar '+esc(label)+'">+</button></span>';
   }
+  // Cartelito arriba del nombre ("Edición limitada", "Últimas unidades")
+  function badge(p){
+    if(!p.etiqueta) return '';
+    var ultimas = /últim|ultim/i.test(p.etiqueta);
+    return '<span class="badge'+(ultimas?' badge-last':'')+'">'+esc(p.etiqueta)+'</span>';
+  }
   function presList(o){
     return '<ul class="pres">'+o.p.presentaciones.map(function(x,xi){
       return '<li><span class="w">'+esc(x.peso)+'</span><span class="p num">'+money(x.precio)+'</span>'+stepper(o.ci+"-"+o.pi+"-"+xi, o.p.nombre+" "+x.peso)+'</li>';
@@ -417,7 +425,7 @@ footer{background:var(--olive-deep);color:var(--wall);padding-bottom:calc(120px 
     return '<div class="cat"><h3 class="rv">'+esc(c.nombre)+'</h3><div class="items">'+
       c.productos.map(function(p,pi){
         var o={c:c,p:p,ci:ci,pi:pi};
-        return '<article class="item rv" style="--d:'+(pi*0.08)+'s"><h4>'+esc(p.nombre)+'</h4>'+(p.contenido?'<p class="contenido">'+esc(p.contenido)+'</p>':'')+presList(o)+'</article>';
+        return '<article class="item rv" style="--d:'+(pi*0.08)+'s">'+badge(p)+'<h4>'+esc(p.nombre)+'</h4>'+(p.contenido?'<p class="contenido">'+esc(p.contenido)+'</p>':'')+presList(o)+'</article>';
       }).join("")+'</div></div>';
   }).join("");
 

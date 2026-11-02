@@ -11,6 +11,8 @@
     "elegido: true" lo muestra en grande en "Los más elegidos" (necesita foto).
   - "sello" (opcional): datos cortos que aparecen arriba del nombre.
   - "contenido" (opcional): una línea que aparece debajo del nombre en la lista.
+  - "etiqueta" (opcional): cartelito arriba del nombre, por ejemplo "Edición limitada"
+    o "Últimas unidades" (este último sale en otro color).
   - La fecha de los precios se pone sola con el día de hoy.
 */
 
@@ -54,6 +56,7 @@ window.ALORIA = {
         },
         {
           nombre: "Aceitunas negras",
+          etiqueta: "Últimas unidades",
           foto: "img/aceitunas-negras.jpg",
           sello: "Enteras en salmuera · Aimogasta",
           detalle: "Elaboración artesanal, de La Rioja.",
@@ -80,6 +83,7 @@ window.ALORIA = {
         },
         {
           nombre: "Almendra guara",
+          etiqueta: "Edición limitada",
           detalle: "Calibre mediano.",
           presentaciones: [
             { peso: "1 kg", precio: 30000 },
@@ -97,6 +101,7 @@ window.ALORIA = {
         },
         {
           nombre: "Maní tostado sin sal",
+          etiqueta: "Edición limitada",
           detalle: "Sin sal.",
           presentaciones: [
             { peso: "1 kg", precio: 6000 }
@@ -104,6 +109,7 @@ window.ALORIA = {
         },
         {
           nombre: "Pasas de uva",
+          etiqueta: "Edición limitada",
           detalle: "Para la granola, la ensalada o la torta.",
           presentaciones: [
             { peso: "1 kg", precio: 7500 }
@@ -116,6 +122,7 @@ window.ALORIA = {
       productos: [
         {
           nombre: "Chía premium",
+          etiqueta: "Edición limitada",
           detalle: "Para el yogur, el pan o el agua de la mañana.",
           presentaciones: [
             { peso: "1 kg", precio: 9500 },
